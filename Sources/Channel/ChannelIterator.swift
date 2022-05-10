@@ -1,8 +1,8 @@
 /// Iterates over pipe input
-public struct PipeIterator<Element>: AsyncIteratorProtocol {
-    private let buffer: PipeBuffer<Element>
+public struct ChannelIterator<Element>: AsyncIteratorProtocol {
+    private let buffer: ChannelBuffer<Element>
     
-    init(buffer: PipeBuffer<Element>) {
+    init(buffer: ChannelBuffer<Element>) {
         self.buffer = buffer
     }
     

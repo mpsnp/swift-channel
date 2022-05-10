@@ -1,24 +1,29 @@
 // swift-tools-version: 5.6
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "swift-pipe",
+    name: "swift-channel",
     platforms: [.iOS(.v13), .macOS(.v10_15), .macCatalyst(.v13)],
     products: [
-        .library(
-            name: "Pipe",
-            targets: ["Pipe"]),
+        .library(name: "Channel", targets: [
+            "Channel",
+        ]),
+        .executable(name: "channel-example", targets: [
+            "ChannelExample",
+        ]),
     ],
     dependencies: [
     ],
     targets: [
-        .target(
-            name: "Pipe",
-            dependencies: []),
-        .testTarget(
-            name: "PipeTests",
-            dependencies: ["Pipe"]),
+        .target(name: "Channel", dependencies: [
+        ]),
+        .testTarget(name: "ChannelTests", dependencies: [
+            "Channel",
+        ]),
+        
+        .executableTarget(name: "ChannelExample", dependencies: [
+            .target(name: "Channel"),
+        ]),
     ]
 )
